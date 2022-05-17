@@ -18,6 +18,9 @@ django-cors-headers = "*"
 dj-rest-auth = "*"
 django-extensions = "*"
 drf-spectacular = "*"
+guest = "*"
+pyamqp = "*"
+amqp = "*"
 
 [dev-packages]
 pylint = "*"

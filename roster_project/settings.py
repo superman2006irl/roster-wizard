@@ -11,12 +11,16 @@ https://docs.djangoproject.com/en/2.1/ref/settings/
 """
 
 import os
+from logging import INFO
 from pathlib import Path
 from environs import Env
 from django.conf import settings
 from django.contrib.messages import constants as messages
 
 # Use
+from kombu import simple
+import pyamqp
+
 env = Env()
 env.read_env()
 
@@ -263,7 +267,6 @@ DEBUG_TOOLBAR_CONFIG = {"SHOW_TOOLBAR_CALLBACK": show_toolbar}
 
 # Crispy forms
 CRISPY_TEMPLATE_PACK = "bootstrap4"
-
 # Celery
 CELERY_BROKER_URL = env("CELERY_BROKER_URL")
 CELERY_RESULT_BACKEND = env("CELERY_RESULT_BACKEND")
@@ -291,6 +294,7 @@ MESSAGE_TAGS = {
 
 # Cross Origin Resource Sharing (CORS)
 CORS_ALLOWED_ORIGINS = env("CORS_ALLOWED_ORIGINS").split(",")
+
 
 # Schema Documentation
 SPECTACULAR_SETTINGS = {
